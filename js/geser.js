@@ -1,33 +1,20 @@
-const state = {};
 const carouselList = document.querySelector('.carousel__list');
 const carouselItems = document.querySelectorAll('.carousel__item');
 const elems = Array.from(carouselItems);
 
 carouselList.addEventListener('click', function (event) {
-  var newActive = event.target;
-  var isItem = newActive.closest('.carousel__item');
+  const item = event.target.closest('.carousel__item');
 
-  if (!isItem || newActive.classList.contains('carousel__item_active')) {
-    return;
-  }
+  if (!item) return;
 
-  update(newActive);
+  update(item);
 });
 
 const update = function (newActive) {
-  const newActivePos = newActive.dataset.pos;
+  const newActivePos = parseInt(newActive.dataset.pos);
 
-  const current = elems.find((elem) => elem.dataset.pos == 0);
-  const prev = elems.find((elem) => elem.dataset.pos == -1);
-  const next = elems.find((elem) => elem.dataset.pos == 1);
-  const first = elems.find((elem) => elem.dataset.pos == -2);
-  const last = elems.find((elem) => elem.dataset.pos == 2);
-
-  current.classList.remove('carousel__item_active');
-
-  [current, prev, next, first, last].forEach((item) => {
-    var itemPos = item.dataset.pos;
-
+  elems.forEach((item) => {
+    const itemPos = parseInt(item.dataset.pos);
     item.dataset.pos = getPos(itemPos, newActivePos);
   });
 };
@@ -35,9 +22,20 @@ const update = function (newActive) {
 const getPos = function (current, active) {
   const diff = current - active;
 
-  if (Math.abs(current - active) > 2) {
+  if (Math.abs(diff) > 2) {
     return -current;
   }
 
   return diff;
 };
+
+/* tombol */
+document.querySelector('.next').addEventListener('click', () => {
+  const next = elems.find((el) => el.dataset.pos == 1);
+  update(next);
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+  const prev = elems.find((el) => el.dataset.pos == -1);
+  update(prev);
+});

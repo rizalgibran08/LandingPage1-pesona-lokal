@@ -565,9 +565,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.4rem 7%;
+  padding: 1rem 7%;
   background-color: var(--bg);
-  /* border-bottom: 1px solid var(--primary); */
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
@@ -588,7 +588,7 @@ body {
 }
 
 .navbar2 .navbar2-nav2 {
-  margin-left: 300px;
+  margin-left: 40rem;
 }
 
 .navbar2 .navbar2-nav2 a {
@@ -682,7 +682,6 @@ body {
 
 .gambarTop {
   margin-top: 180px;
-  margin-left: 150px;
   width: 450px;
 }
 
