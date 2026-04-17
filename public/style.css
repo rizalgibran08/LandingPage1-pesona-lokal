@@ -682,7 +682,8 @@ body {
 
 .gambarTop {
   margin-top: 180px;
-  width: 450px;
+  margin-bottom: 3rem;
+  width: 700px;
 }
 
 .gambarTop .gbr2 {
